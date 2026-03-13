@@ -8,6 +8,9 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MediaModule } from './modules/media/media.module';
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -69,6 +72,8 @@ import { MediaModule } from './modules/media/media.module';
     }),
 
     // Feature modules
+    AuthModule,
+    UsersModule,
     MediaModule,
   ],
   controllers: [AppController],
@@ -78,6 +83,11 @@ import { MediaModule } from './modules/media/media.module';
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    // Apply JWT auth globally (will be overridden by @Public() decorator)
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
     },
   ],
 })
