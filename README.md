@@ -1,5 +1,8 @@
 # Medium Clone - Backend API
 
+[![Railway Deployment](https://github.com/devmahdi/backend/actions/workflows/railway-deploy.yml/badge.svg)](https://github.com/devmahdi/backend/actions/workflows/railway-deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 NestJS-based RESTful API for a Medium-style blogging platform with JWT authentication, TypeORM, PostgreSQL, and Redis.
 
 ## 🚀 Features
