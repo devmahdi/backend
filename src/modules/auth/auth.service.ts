@@ -108,6 +108,33 @@ export class AuthService {
     await this.usersService.updateRefreshToken(userId, null);
   }
 
+  async changePassword(
+    userId: string,
+    currentPassword: string,
+    newPassword: string,
+  ) {
+    const user = await this.usersService.findById(userId);
+
+    // Verify current password
+    const isPasswordValid = await bcrypt.compare(
+      currentPassword,
+      user.password,
+    );
+
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Current password is incorrect');
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update password
+    await this.usersService.updatePassword(userId, hashedPassword);
+
+    // Invalidate all refresh tokens
+    await this.usersService.updateRefreshToken(userId, null);
+  }
+
   private async generateTokens(user: User) {
     const payload = {
       sub: user.id,
