@@ -296,20 +296,62 @@ pnpm run migration:revert
 
 ### Railway (Recommended)
 
-1. Connect your GitHub repository to Railway
-2. Add environment variables from `.env.example`
-3. Railway will automatically detect and deploy
+We provide comprehensive Railway deployment documentation and automation:
 
-### Manual Deployment
+#### Quick Start (10 minutes)
+```bash
+# Install Railway CLI
+npm install -g @railway/cli
+
+# Run automated setup script
+chmod +x scripts/setup-railway.sh
+./scripts/setup-railway.sh
+
+# Deploy
+railway up
+
+# Run migrations
+railway run pnpm run migration:run
+```
+
+**📖 Documentation:**
+- **Quick Start:** [RAILWAY_QUICK_START.md](./RAILWAY_QUICK_START.md) - 10-minute setup guide
+- **Full Guide:** [DEPLOYMENT.md](./DEPLOYMENT.md) - Complete deployment documentation
+- **Troubleshooting:** [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues & solutions
+
+**🔧 Configuration Files:**
+- `railway.json` - Railway service configuration
+- `.env.production.example` - Production environment template
+- `.github/workflows/railway-deploy.yml` - CI/CD pipeline
+- `scripts/setup-railway.sh` - Automated setup script
+
+#### What Gets Deployed:
+- ✅ NestJS API on Railway
+- ✅ PostgreSQL database (auto-provisioned)
+- ✅ Redis cache (optional)
+- ✅ Health monitoring
+- ✅ Auto-scaling
+- ✅ SSL/HTTPS (automatic)
+- ✅ CI/CD via GitHub Actions
+
+#### Your API will be live at:
+- **API:** `https://your-app.up.railway.app/api/v1`
+- **Swagger:** `https://your-app.up.railway.app/api/docs`
+- **Health:** `https://your-app.up.railway.app/api/v1/health`
+
+### Manual Deployment (Other Platforms)
 
 ```bash
 # Build
 pnpm run build
 
 # Set production environment variables
+export NODE_ENV=production
+export PORT=3000
+# ... (see .env.production.example for all variables)
 
 # Start production server
-NODE_ENV=production pnpm run start:prod
+pnpm run start:prod
 ```
 
 ## 📚 Additional Resources
