@@ -2,9 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { APP_GUARD } from '@nestjs/core';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MediaModule } from './modules/media/media.module';
 
 @Module({
   imports: [
@@ -12,6 +15,27 @@ import { AppService } from './app.service';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+    }),
+
+    // Serve static files (for local storage)
+    ServeStaticModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => [
+        {
+          rootPath: join(
+            __dirname,
+            '..',
+            configService.get('UPLOAD_DIR', './uploads'),
+          ),
+          serveRoot: '/uploads',
+          serveStaticOptions: {
+            index: false,
+            cacheControl: true,
+            maxAge: 86400000, // 1 day in milliseconds
+          },
+        },
+      ],
     }),
 
     // TypeORM configuration
@@ -43,6 +67,9 @@ import { AppService } from './app.service';
         },
       ],
     }),
+
+    // Feature modules
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [

@@ -41,3 +41,7 @@ coverage/
 .eslintcache
 .prettier-cache
 
+-e 
+# Uploads
+uploads/
+!uploads/.gitkeep
