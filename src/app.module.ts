@@ -10,6 +10,7 @@ import { AppService } from './app.service';
 import { MediaModule } from './modules/media/media.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ArticlesModule } from './modules/posts/articles.module';
 import { FeedModule } from './modules/feed/feed.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { ClapsModule } from './modules/claps/claps.module';
@@ -80,6 +81,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     AuthModule,
     UsersModule,
     MediaModule,
+    ArticlesModule,
     FeedModule,
     CommentsModule,
     ClapsModule,
