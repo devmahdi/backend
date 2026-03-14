@@ -12,6 +12,8 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { FeedModule } from './modules/feed/feed.module';
 import { CommentsModule } from './modules/comments/comments.module';
+import { ClapsModule } from './modules/claps/claps.module';
+import { BookmarksModule } from './modules/bookmarks/bookmarks.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 
 @Module({
@@ -79,6 +81,8 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     MediaModule,
     FeedModule,
     CommentsModule,
+    ClapsModule,
+    BookmarksModule,
   ],
   controllers: [AppController],
   providers: [
