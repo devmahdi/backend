@@ -11,6 +11,7 @@ import { MediaModule } from './modules/media/media.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { FeedModule } from './modules/feed/feed.module';
+import { CommentsModule } from './modules/comments/comments.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 
 @Module({
@@ -77,6 +78,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     UsersModule,
     MediaModule,
     FeedModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [
