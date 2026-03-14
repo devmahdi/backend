@@ -11,6 +11,7 @@ import { MediaModule } from './modules/media/media.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ArticlesModule } from './modules/posts/articles.module';
+import { TagsModule } from './modules/tags/tags.module';
 import { FeedModule } from './modules/feed/feed.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { ClapsModule } from './modules/claps/claps.module';
@@ -82,6 +83,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     UsersModule,
     MediaModule,
     ArticlesModule,
+    TagsModule,
     FeedModule,
     CommentsModule,
     ClapsModule,
