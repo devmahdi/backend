@@ -14,6 +14,7 @@ import { FeedModule } from './modules/feed/feed.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { ClapsModule } from './modules/claps/claps.module';
 import { BookmarksModule } from './modules/bookmarks/bookmarks.module';
+import { StatsModule } from './modules/stats/stats.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 
 @Module({
@@ -83,6 +84,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     CommentsModule,
     ClapsModule,
     BookmarksModule,
+    StatsModule,
   ],
   controllers: [AppController],
   providers: [
