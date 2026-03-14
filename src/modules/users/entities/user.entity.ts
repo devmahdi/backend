@@ -6,9 +6,11 @@ import {
   UpdateDateColumn,
   ManyToMany,
   JoinTable,
+  OneToMany,
   Index,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import { Post } from '../../posts/entities/post.entity';
 
 export enum UserRole {
   READER = 'READER',
@@ -69,6 +71,10 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  // Relations
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Post[];
 
   // Self-referencing many-to-many for followers
   @ManyToMany(() => User, (user) => user.following)

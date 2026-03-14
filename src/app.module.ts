@@ -10,6 +10,7 @@ import { AppService } from './app.service';
 import { MediaModule } from './modules/media/media.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { FeedModule } from './modules/feed/feed.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 
 @Module({
@@ -75,6 +76,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     AuthModule,
     UsersModule,
     MediaModule,
+    FeedModule,
   ],
   controllers: [AppController],
   providers: [
